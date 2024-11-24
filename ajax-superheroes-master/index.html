@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Button</title>
+</head>
+<body>
+    <input type="text" id="search-input" placeholder="Enter search term">
+    <button id="search-btn">Search</button>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const query = document.getElementById('search-input').value;
+            document.getElementById('result').innerText = `You searched for: ${query}`;
+        });
+    </script>
+</body>
+</html>
