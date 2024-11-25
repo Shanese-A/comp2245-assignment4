@@ -70,3 +70,39 @@ $superheroes = [
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+
+<?php
+$superheroes = [
+    ["alias" => "Iron Man", "name" => "Tony Stark", "bio" => "A billionaire industrialist and genius inventor."],
+    ["alias" => "Spider-Man", "name" => "Peter Parker", "bio" => "Bitten by a radioactive spider."],
+    ["alias" => "Captain America", "name" => "Steve Rogers", "bio" => "Recipient of the Super-Soldier serum."],
+    ["alias" => "Captain Marvel ", "name" => "Carol Danvers", "bio" => "One of the universe's most powerful heroes."],
+    ["alias" => "Black Widow", "name" => "Natasha Romanov", "bio" => "One of S.H.I.E.L.D.’s most deadly assassins."],
+    ["alias" => "Hulk", "name" => "Bruce Banner", "bio" => "The uncontrollable green monster powered by his rage."],
+    ["alias" => "Hawkeye", "name" => "Clint Barton", "bio" => "The Avengers’ amazing archer."],
+    ["alias" => "Black Panther", "name" => "T'Challa", "bio" => "King of the secretive and highly advanced African nation of Wakanda."],
+    ["alias" => "Thor", "name" => "Thor Odinson", "bio" => "The god of thunder."],
+    ["alias" => "Scarlett Witch", "name" => "Wanda Maximoff", "bio" => "Powerful warrior."],
+];
+
+
+$query = isset($_GET['query']) ? trim($_GET['query']) : '';
+
+if ($query === '') {
+    foreach ($superheroes as $hero) {
+        echo "<h3>{$hero['alias']}</h3><p>{$hero['bio']}</p>";
+    }
+} else {
+    $found = false;
+    foreach ($superheroes as $hero) {
+        if (stripos($hero['alias'], $query) !== false || stripos($hero['name'], $query) !== false) {
+            echo "<h3>{$hero['alias']}</h3><h4>{$hero['name']}</h4><p>{$hero['bio']}</p>";
+            $found = true;
+            break;
+        }
+    }
+    if (!$found) {
+        echo "Superhero not found.";
+    }
+}
+?>
